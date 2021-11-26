@@ -113,7 +113,7 @@ func main() {
 			Usage:   "Read value from a characteristic or descriptor",
 			Before:  setup,
 			Action:  cmdRead,
-			Flags:   []cli.Flag{flgUUID, flgTimeout, flgName, flgAddr},
+			Flags:   []cli.Flag{flgUUID, flgTimeout, flgName, flgAddr, flgAxpert},
 		},
 		{
 			Name:    "write",
@@ -323,6 +323,10 @@ func cmdRead(c *cli.Context) error {
 	if err := doDiscover(c); err != nil {
 		return err
 	}
+	if c.Bool("axpert") {
+		return readAxpert(c)
+	}
+
 	if u := curr.profile.Find(ble.NewCharacteristic(curr.uuid)); u != nil {
 		b, err := curr.client.ReadCharacteristic(u.(*ble.Characteristic))
 		if err != nil {

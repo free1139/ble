@@ -19,13 +19,13 @@ func advHandler(a ble.Advertisement) {
 		comma = ","
 	}
 	if len(a.Services()) > 0 {
-		fmt.Printf("%s Svcs: %v", comma, a.Services())
+		fmt.Printf("%s Svcs: %+v", comma, a.Services())
 		comma = ","
 	}
 	if len(a.ManufacturerData()) > 0 {
 		fmt.Printf("%s MD: %X", comma, a.ManufacturerData())
 	}
-	fmt.Printf("\n")
+	fmt.Printf(" Power:%d\n", a.TxPowerLevel())
 }
 
 // ServiceData() []ServiceData

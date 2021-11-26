@@ -15,3 +15,7 @@ var (
 	flgUUID     = cli.StringFlag{Name: "uuid, u", Usage: "UUID"}
 	flgInd      = cli.BoolFlag{Name: "ind", Usage: "Indication"}
 )
+
+var (
+	flgAxpert = cli.BoolFlag{Name: "axpert, ax", Usage: "axpert data"}
+)

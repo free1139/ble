@@ -6,8 +6,8 @@ import (
 	"log"
 	"sync"
 
-	"github.com/go-ble/ble"
 	"github.com/JuulLabs-OSS/cbgo"
+	"github.com/go-ble/ble"
 )
 
 // newGenConn creates a new generic (role-less) connection.  This should not be
@@ -222,4 +222,8 @@ func (c *conn) delSub(char *ble.Characteristic) {
 	defer c.Unlock()
 
 	delete(c.subs, uuidStr)
+}
+
+func (c *conn) ReadRSSI() int {
+	return -1
 }
